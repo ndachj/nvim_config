@@ -1,0 +1,21 @@
+{
+  "highlight.colors.enable": true,
+  "coc.preferences.formatOnSave": true,
+  "diagnostic.errorSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "󰌶",
+  "diagnostic.enableHighlightLineNumber": true,
+  "codeLens.enable": true,
+  //Python
+  "pyright.enable": true,
+  "python.formatting.provider": "autopep8",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  //Lua
+  "languageserver": {
+    "lua": {
+      "command": "lua-language-server",
+      "filetypes": ["lua"]
+    }
+  }
+}
