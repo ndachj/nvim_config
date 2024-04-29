@@ -1,3 +1,5 @@
+-- https://github.com/LunarVim/Launch.nvim
+
 return {
     kind = {
         Array = " ",

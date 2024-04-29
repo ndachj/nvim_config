@@ -152,3 +152,20 @@ vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}"
 -- Mappings for CoCList
 -- code actions and coc stuff
 ---@diagnostic disable-next-line: redefined-local
+local opts = { silent = true, nowait = true }
+-- Show all diagnostics
+keyset("n", "<leader>ad", ":<C-u>CocList diagnostics<cr>", opts)
+-- Manage extensions
+--keyset("n", "<leader>e", ":<C-u>CocList extensions<cr>", opts)
+-- Show commands
+--keyset("n", "<leader>c", ":<C-u>CocList commands<cr>", opts)
+-- Find symbol of current document
+keyset("n", "<leader>ao", ":<C-u>CocList outline<cr>", opts)
+-- Search workspace symbols
+keyset("n", "<leader>ai", ":<C-u>CocList -I symbols<cr>", opts)
+-- Do default action for next item
+keyset("n", "<leader>aj", ":<C-u>CocNext<cr>", opts)
+-- Do default action for previous item
+keyset("n", "<leader>ak", ":<C-u>CocPrev<cr>", opts)
+-- Resume latest coc list
+keyset("n", "<leader>ap", ":<C-u>CocListResume<cr>", opts)
