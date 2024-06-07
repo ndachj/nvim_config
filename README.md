@@ -1,17 +1,19 @@
 # Neovim config
 
 ```
-  ___ ___   ___ | | | _(_) __| |
- / __/ _ \ / _ \| | |/ / |/ _` |
-| (_| (_) | (_) | |   <| | (_| |
- \___\___/ \___/|_|_|\_\_|\__,_|
+╭─────────────────────────────────╮
+│  ___ ___   ___ | | | _(_) __| | │
+│ / __/ _ \ / _ \| | |/ / |/ _` | │
+│| (_| (_) | (_) | |   <| | (_| | │
+│ \___\___/ \___/|_|_|\_\_|\__,_| │
+╰─────────────────────────────────╯
 ```
 
 My simple and modern Neovim configuration.
 
 ## 📷 Screenshot
 
-Comming soon ...99%
+Coming soon ...99%
 
 ## 🛠 Quick Guide
 
@@ -38,16 +40,27 @@ On other OS
 
 ### ✨ Optional
 
-Neovim python support
+Nerd font (Font that supports icons)
+[get Nerd font]()
+
+Clipboard integration
 
 ```bash
-pip install pynvim
+# On Ubuntu or Debian
+sudo apt install xsel # for X11
+sudo apt install wl-clipboard # for wayland
 ```
 
-Neovim node support
+Neovim Python 3 support
 
 ```bash
-npm i -g neovim
+python3 -m pip install pynvim
+```
+
+Neovim Node.js support
+
+```bash
+npm install -g neovim
 ```
 
 ### ⚡ Setup
@@ -58,7 +71,7 @@ Backup your current `nvim` config
 mv -v ~/.config/nvim ~/.config/nvim.bak
 ```
 
-Remove old plugins
+Remove the old plugins
 
 ```bash
 rm -rf ~/.local/share/nvim
@@ -90,20 +103,20 @@ Open `nvim` and enter the following:
     │   │   └── set_colorscheme.lua
     │   ├── core
     │   │   ├── keymaps.lua
+    │   │   ├── lazy_nvim.lua
     │   │   └── options.lua
     │   ├── extra
     │   │   └── icons.lua
-    │   ├── plugins
-    │   │   ├── bufferline_nvim.lua
-    │   │   ├── colorschemes.lua
-    │   │   └── ... 
-    │   └── pmanager
-    │       └── lazy_nvim.lua
+    │   └── plugins
+    │       ├── bufferline_nvim.lua
+    │       ├── ...
+    │       └── whichkey_nvim.lua
+    │
     ├── coc-settings.json
     └── init.lua
 </pre>
 
-## 🎨 Theming
+## 🎨 Theme
 
 [vscode](https://github.com/Mofiqul/vscode.nvim) - Lua port of vim-code-dark colorscheme for neovim with VScode's light and dark theme.
 

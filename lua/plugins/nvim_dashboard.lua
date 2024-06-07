@@ -1,76 +1,89 @@
+-- dashboard-nvim - a fancy and Blazing Fast start screen plugin of neovim.
+
+
 local M = {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
 }
-local mytoilet = {
-    [[                                  ]],
-    [[  ___ ___   ___ | | | _(_) __| |  ]],
-    [[ / __/ _ \ / _ \| | |/ / |/ _` |  ]],
-    [[| (_| (_) | (_) | |   <| | (_| |  ]],
-    [[ \___\___/ \___/|_|_|\_\_|\__,_|  ]],
-    [[                                  ]],
+
+local banner = {
+    [[ ╭─────────────────────────────────╮ ]],
+    [[ │  ___ ___   ___ | | | _(_) __| | │ ]],
+    [[ │ / __/ _ \ / _ \| | |/ / |/ _` | │ ]],
+    [[ │| (_| (_) | (_) | |   <| | (_| | │ ]],
+    [[ │ \___\___/ \___/|_|_|\_\_|\__,_| │ ]],
+    [[ ╰─────────────────────────────────╯ ]],
 }
-local ic = require("extra.icons")
 
 function M.config()
+    local icons = require("extra.icons")
     require('dashboard').setup {
-        theme = 'doom',        --  theme is doom and hyper default is hyper
+        theme = 'doom',      --  theme is doom and hyper
         config = {
-            header = mytoilet, --your header
+            header = banner, --your header
             center = {
                 {
-                    icon = ic.ui.NewFile,
+                    icon = icons.ui.FindFile,
+                    icon_hl = 'Title',
+                    desc = 'Find File',
+                    desc_hl = 'String',
+                    key = 'f',          -- shortcut key in dashboard buffer not keymap!!
+                    key_format = ' %s', -- remove default surrounding `[]`
+                    action = "Telescope find_files"
+                },
+                {
+                    icon = icons.ui.NewFile,
                     icon_hl = 'Title',
                     desc = 'New File',
                     desc_hl = 'String',
-                    key = 'f',
-                    --keymap = 'f',
-                    key_format = ' %s', -- remove default surrounding `[]`
+                    key = 'n',
+                    key_format = ' %s',
                     action = "ene | startinsert"
                 },
                 {
-                    icon = ic.ui.History,
+                    icon = icons.ui.History,
                     icon_hl = 'Title',
                     desc = 'Recent Files',
                     desc_hl = 'String',
                     key = 'r',
-                    --keymap = 'r',
                     key_format = ' %s',
                     action = 'Telescope oldfiles'
                 },
                 {
-                    icon = ic.misc.Key,
+                    icon = icons.misc.Key,
                     icon_hl = 'Title',
-                    desc = 'Keybindings',
+                    desc = 'Keymaps',
                     desc_hl = 'String',
-                    key = 'k',
-                    --keymap = 'nk',
+                    key = 'm',
                     key_format = ' %s',
-                    action = ''
+                    action = 'Telescope keymaps'
                 },
                 {
-                    icon = ic.ui.Gear,
+                    icon = icons.ui.Gear,
                     icon_hl = 'Title',
                     desc = 'Nvim Config',
                     desc_hl = 'String',
                     key = 'c',
-                    --keymap = 'c',
                     key_format = ' %s',
-                    action = 'e ~/.config/nvim/init.lua'
+                    action = 'e ~/.config/nvim/'
                 },
                 {
-                    icon = ic.ui.BoldClose,
+                    icon = icons.ui.BoldClose,
                     icon_hl = 'Title',
                     desc = 'Quit Nvim',
                     desc_hl = 'String',
                     key = 'q',
-                    --keymap = 'q',
                     key_format = ' %s',
                     action = 'confirm quit'
                 },
             },
             -- footer = {}  --your footer
+        },
+        hide = {
+            statusline, -- hide statusline
+            tabline,    -- hide the tabline
+            winbar,     -- hide winbar
         },
     }
 end

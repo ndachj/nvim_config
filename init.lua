@@ -4,46 +4,43 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Set <space> as the leader key
--- See `:help mapleader`
+-- Set <underscore> as the local leader key
+-- See `:help mapleader`,
+--     `:help maplocalleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "_"
 
 --[[
 ├── init.lua
 └── lua
     ├── configs
-    │   ├── coc_nvim.lua
-    │   └── set_colorscheme.lua
+    │   └── coc_nvim_config.lua
     ├── core
+    │   ├── autocmds.lua
     │   ├── keymaps.lua
+    │   ├── lazy_nvim.lua
     │   └── options.lua
     ├── extra
     │   └── icons.lua
-    ├── plugins
-    │   ├── bufferline_nvim.lua
-    │   ├── coc_completion.lua
-    │   ├── colorschemes.lua
-    │   ├── nvim_dashboard.lua
-    │   ├── nvim_lualine.lua
-    │   ├── nvim_tree.lua
-    │   ├── nvim_treesitter.lua
-    │   ├── telescope_nvim.lua
-    │   └── whichkey_nvim.lua
-    └── pmanager
-        └── lazy_nvim.lua
+    └── plugins
+        ├── coc_nvim.lua
+        ├── colorschemes.lua
+        ├── nvim_bufferline.lua
+        ├── ...
+        └── vim_snippets.lua
 ]]
---
 
 -- core modules
 require("core.keymaps")
 require("core.options")
+require("core.autocmds")
 
 -- plugin manager
-require("pmanager.lazy_nvim")
+require("core.lazy_nvim")
 
--- colorscheme
-require("configs.set_colorscheme")
+--  set the colorscheme
+vim.cmd("colorscheme vscode")
 
 -- other config
-require("configs.coc_nvim")
+require("configs.coc_nvim_config")
